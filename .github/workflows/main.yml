@@ -26,7 +26,7 @@ jobs:
         key: ${{ secrets.EC2_SSH_KEY }}
         port: 22
         script: |
-          rm -rf /home/ubuntu/Node-CICD
+          sudo rm -rf /home/ubuntu/Node-CICD
 
     - name: Copy files to EC2
       uses: appleboy/scp-action@v0.1.4
