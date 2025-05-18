@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cloud Benefits</title>
+  <link rel="icon" href="/download.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="overlay">
+      <h1 class="hero-title">Unlock the Power of Cloud Computing</h1>
+      <p class="hero-subtitle">Scalability, Flexibility, and Innovation at Your Fingertips</p>
+      <a href="#benefits" class="cta-button">Explore Benefits</a>
+    </div>
+  </header>
+
+  <section id="introduction" class="section fade-in">
+    <h2>What is Cloud Computing?</h2>
+    <p>Cloud computing allows users to store and access data and programs over the internet instead of their computer’s hard drive. It offers powerful resources, applications, and data storage capabilities remotely, on demand.</p>
+  </section>
+
+  <section id="benefits" class="section fade-in">
+    <h2>Benefits of Cloud</h2>
+    <ul>
+      <li>🌍 <strong>Global Access:</strong> Access data anytime, anywhere.</li>
+      <li>📈 <strong>Scalability:</strong> Easily scale resources up or down as needed.</li>
+      <li>🔒 <strong>Security:</strong> Advanced protection for data and applications.</li>
+      <li>💰 <strong>Cost Efficiency:</strong> Pay only for what you use.</li>
+      <li>⚡ <strong>Performance:</strong> Fast and reliable with global server networks.</li>
+    </ul>
+  </section>
+
+  <section id="case-studies" class="section fade-in">
+    <h2>Case Studies</h2>
+    <div class="case-grid">
+      <div class="card">
+        <h3>Netflix</h3>
+        <p>Scales video delivery across the globe using AWS cloud infrastructure.</p>
+      </div>
+      <div class="card">
+        <h3>Airbnb</h3>
+        <p>Handles millions of users with Google Cloud to optimize booking experiences.</p>
+      </div>
+      <div class="card">
+        <h3>NASA</h3>
+        <p>Leverages the cloud to store, manage, and analyze huge amounts of space data.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>Built with ❤️ using Node.js & EJS | <a href="#">Back to Top</a></p>
+  </footer>
+
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
