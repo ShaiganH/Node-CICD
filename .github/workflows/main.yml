@@ -18,6 +18,16 @@ jobs:
       with:
         node-version: 18
 
+    - name: SSH clean EC2 folder
+      uses: appleboy/ssh-action@v0.1.7
+      with:
+        host: ${{ secrets.HOST }}
+        username: ubuntu
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: 22
+        script: |
+          rm -rf /home/ubuntu/Node-CICD
+
     - name: Copy files to EC2
       uses: appleboy/scp-action@v0.1.4
       with:
