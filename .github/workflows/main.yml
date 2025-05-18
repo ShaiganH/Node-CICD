@@ -21,9 +21,9 @@ jobs:
     - name: SSH clean EC2 folder
       uses: appleboy/ssh-action@v0.1.7
       with:
-        host: ${{ secrets.HOST }}
+        host: ${{ secrets.EC2_HOST }}
         username: ubuntu
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        key: ${{ secrets.EC2_SSH_KEY }}
         port: 22
         script: |
           rm -rf /home/ubuntu/Node-CICD
