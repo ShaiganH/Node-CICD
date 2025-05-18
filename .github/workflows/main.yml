@@ -25,7 +25,7 @@ jobs:
         username: ubuntu
         key: ${{ secrets.EC2_SSH_KEY}}
         source: "."
-        target: "/home/ubuntu/app"
+        target: "/home/ubuntu/Node-CICD"
 
     - name: SSH into EC2 and restart app
       uses: appleboy/ssh-action@v1.0.3
@@ -34,7 +34,7 @@ jobs:
         username: ubuntu
         key: ${{ secrets.EC2_SSH_KEY }}
         script: |
-          cd /home/ubuntu/app
+          cd /home/ubuntu/Node-CICD
           docker stop node-app || true
           docker rm node-app || true
           docker rmi node-app
