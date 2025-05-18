@@ -1,0 +1,44 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Node
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+
+    - name: Copy files to EC2
+      uses: appleboy/scp-action@v0.1.4
+      with:
+        host: ${{ secrets.EC2_HOST}}
+        username: ubuntu
+        key: ${{ secrets.EC2_SSH_KEY}}
+        source: "."
+        target: "/home/ubuntu/app"
+
+    - name: SSH into EC2 and restart app
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ubuntu
+        key: ${{ secrets.EC2_SSH_KEY }}
+        script: |
+          cd /home/ubuntu/app
+          docker stop node-app || true
+          docker rm node-app || true
+          docker rmi node-app
+          docker build -t node-app .
+          docker run -d -p 3000:3000 --name node-app node-app
+          sudo systemctl reload nginx
+          
