@@ -47,7 +47,11 @@ jobs:
           cd /home/ubuntu/Node-CICD
           docker stop node-app || true
           docker rm node-app || true
-          docker rmi node-app
+          echo "Removing old image..."
+          docker rmi -f node-app || true
+
+          echo "Pruning Docker cache..."
+          docker builder prune -af || true
           docker build -t node-app .
           docker run -d -p 3000:3000 --name node-app node-app
           sudo systemctl reload nginx
